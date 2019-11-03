@@ -1,0 +1,25 @@
+{
+  "name": "zeonbot",
+  "version": "1.0.0",
+  "description": "Nova's Secondary bot. Zeon, previously known as LynxBot, was mostly underused and decommissioned a while back. Now has been repurposed and reactivated once more.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Discord",
+    "BetaTest",
+    "Node.JS"
+  ],
+  "author": "NovaLynxie",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "ffmpeg-static": "^2.7.0",
+    "log-symbols": "^3.0.0",
+    "node-opus": "^0.3.3",
+    "path": "^0.12.7",
+    "ytdl-core": "^1.0.0"
+  }
+}
