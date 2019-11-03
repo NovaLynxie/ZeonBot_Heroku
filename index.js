@@ -106,4 +106,4 @@ bot.on("message", async message => {
 });
 
 // Here we login the bot with the porvided token in the config file, as login() returns a Promise we catch the error.
-bot.login(bot.config.token).catch(console.error());
+bot.login(process.env.token).catch(console.error());
