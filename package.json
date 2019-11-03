@@ -4,7 +4,6 @@
   "description": "Nova's Secondary bot. Zeon, previously known as LynxBot, was mostly underused and decommissioned a while back. Now has been repurposed and reactivated once more.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "keywords": [
