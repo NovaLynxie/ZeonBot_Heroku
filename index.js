@@ -70,7 +70,23 @@ load();
  * @description Event is triggred when bot enters ready state.
  */
 bot.on("ready", () => {
+	// Bot Ready status reporter.
 	console.log("[ZeonBot] Systems Online.");
+
+	// Message Of The Day reporter.
+	bot.guilds.forEach((guild) => { //for each guild the bot is in
+		let defaultChannel = "";
+		guild.channels.forEach((channel) => {
+			if(channel.type == "text" && defaultChannel == "motd") {
+				if(channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
+					defaultChannel = channel;
+				}
+			}
+		})
+		setInterval (function () {
+			 defaultChannel.send("Message here") //send it to whatever channel the bot has permissions to send on
+		}, 30 * 1000);
+  })
 });
 // Process Error Handler - Catches any errors and attempt to prevent a bot crash.
 process.on('unhandledRejection', error => console.error('[NodeJS] UncaughtPromiseRejection Error!', error));
