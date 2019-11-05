@@ -1,7 +1,7 @@
-var timeHrs = new Date().getHours();
-var timeMins = new Date().getMinutes();
-var timeSecs = new Date().getSeconds();
 module.exports.run = (bot, message) => {
+    var timeHrs = new Date().getHours();
+    var timeMins = new Date().getMinutes();
+    var timeSecs = new Date().getSeconds();
     console.log("LocalTime: "+timeHrs+':'+timeMins+':'+timeSecs)
     message.channel.send(timeHrs+':'+timeMins+':'+timeSecs) 
 };
