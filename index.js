@@ -81,6 +81,7 @@ bot.on("ready", () => {
 			if(channel.type == "text" && defaultChannel == "") {
 				if(channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
 					defaultChannel = channel;
+					console.log(defaultChannel)
 				}
 			}
 		})
