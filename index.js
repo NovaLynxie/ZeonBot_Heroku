@@ -75,7 +75,9 @@ bot.on("ready", () => {
 
 	// Message Of The Day reporter.
 	bot.guilds.forEach((guild) => { //for each guild the bot is in
-		if (bot.config.debug === true) return console.log("[DEBUG] Autosender running...")
+		if (bot.config.debug === true) {
+			console.log("[DEBUG] Autosender running...")
+		};
 		let defaultChannel = "";
 		guild.channels.forEach((channel) => {
 			if(channel.type == "text" && defaultChannel == "") {
@@ -88,7 +90,9 @@ bot.on("ready", () => {
 		setInterval (function () {
 			 defaultChannel.send("This is a test") //send it to whatever channel the bot has permissions to send on
 		}, 120 * 1000);
-		if (bot.config.debug === true) return console.log("[DEBUG] Autosender timer reset.")
+		if (bot.config.debug === true){
+			console.log("[DEBUG] Autosender timer reset.")
+		}
   	})
 });
 // Process Error Handler - Catches any errors and attempt to prevent a bot crash.
