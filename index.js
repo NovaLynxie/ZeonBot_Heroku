@@ -5,10 +5,6 @@ const Client = require("./zeon_modules/zeon.runtime/client.js")
 const { readdirSync } = require("fs");
 const { sep } = require("path");
 const { success, error, warning } = require("log-symbols"); // npm i log-symbols or yarn add log-symbols
-// Variables used in code
-var timeHrs = new Date().getHours();
-var timeMins = new Date().getMinutes();
-var timeSecs = new Date().getSeconds();
 
 // Config Path to get config file.
 const config = require("./config");
@@ -66,13 +62,16 @@ bot.on("ready", () => {
 
 	// Message Of The Day reporter.
 	setInterval ( function() {
+		var timeHrs = new Date().getHours();
+		var timeMins = new Date().getMinutes();
+		var timeSecs = new Date().getSeconds();
 		if (timeHrs == 00 && timeMins == 00 && timeSecs == 00){
-			bot.channels.find("name","motd").send("This is a test.")
+			bot.channels.find("name","motd").send("This is a test message, it should be sent at 00:00:00. Bot Local Time: "+timeHrs+':'+timeMins+':'+timeSecs)
 			if (bot.config.debug === true){
-				console.log("[DEBUG] Autosender timer reset.")
+				console.log("[DEBUG] Autosender message sent.")
 			}
 		}
-	}, 120 * 1000);
+	}, 1 * 1000);
 	/*
 	bot.guilds.forEach((guild) => { //for each guild the bot is in
 		let defaultChannel = "";
