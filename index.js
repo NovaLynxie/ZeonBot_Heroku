@@ -85,7 +85,7 @@ bot.on("ready", () => {
 		})
 		setInterval (function () {
 			 defaultChannel.send("Message here") //send it to whatever channel the bot has permissions to send on
-		}, 30 * 1000);
+		}, 7200 * 1000);
   	})
 });
 // Process Error Handler - Catches any errors and attempt to prevent a bot crash.
