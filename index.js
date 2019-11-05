@@ -1,29 +1,24 @@
-/**
- * @author Anish Shobith
- * @license MIT
- * @file index.js
- */
-
-// Requring the packages and modules required
+// Defining the packages and modules required in code.
 // All the methods used here are destructing.
 //const { Client, Collection } = require("discord.js");
 const Client = require("./zeon_modules/zeon.runtime/client.js")
 const { readdirSync } = require("fs");
 const { sep } = require("path");
 const { success, error, warning } = require("log-symbols"); // npm i log-symbols or yarn add log-symbols
-// we require the config file
+// Variables used in code
+var timeHrs = new Date().getHours();
+var timeMins = new Date().getMinutes();
+var timeSecs = new Date().getSeconds();
+
+// Config Path to get config file.
 const config = require("./config");
 
-// Creating a instance of Client.
+// Creating a instance of Client as bot.
 const bot = new Client();
-
 // Attaching Config to bot so it can be accessed anywhere.
 bot.config = config;
 
-// Creating command and aliases collection.
-//["commands", "aliases"].forEach(x => bot[x] = new Collection());
-
-// A function to load all the commands.
+// Load command files function by Anish Shobith.
 const load = (dir = "./zeon_modules/zeon.cmds/") => {
 
 	readdirSync(dir).forEach(dirs => {
@@ -65,19 +60,17 @@ const load = (dir = "./zeon_modules/zeon.cmds/") => {
 // we call the function to all the commands.
 load();
 //console.log(bot.commands)
-/**
- * Ready event
- * @description Event is triggred when bot enters ready state.
- */
 bot.on("ready", () => {
 	// Bot Ready status reporter.
 	console.log("[ZeonBot] Systems Online.");
 
 	// Message Of The Day reporter.
 	setInterval ( function() {
-		bot.channels.find("name","motd").send("This is a test.")
-		if (bot.config.debug === true){
-			console.log("[DEBUG] Autosender timer reset.")
+		if (timeHrs == 00 && timeMins == 00 && timeSecs == 00){
+			bot.channels.find("name","motd").send("This is a test.")
+			if (bot.config.debug === true){
+				console.log("[DEBUG] Autosender timer reset.")
+			}
 		}
 	}, 120 * 1000);
 	/*
