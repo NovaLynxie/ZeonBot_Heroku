@@ -76,17 +76,17 @@ bot.on("ready", () => {
 	// Message Of The Day reporter.
 	bot.guilds.forEach((guild) => { //for each guild the bot is in
 		if (bot.config.debug === true) return console.log("[DEBUG] Autosender running...")
-		let defaultChannel = "";
+		let defaultChannel = "motd";
 		guild.channels.forEach((channel) => {
-			if(channel.type == "text" && defaultChannel == "") {
+			if(channel.type == "text" && defaultChannel == "motd") {
 				if(channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
 					defaultChannel = channel;
 				}
 			}
 		})
 		setInterval (function () {
-			 defaultChannel.send("Message here") //send it to whatever channel the bot has permissions to send on
-		}, 7200 * 1000);
+			 defaultChannel.send("This is a test") //send it to whatever channel the bot has permissions to send on
+		}, 30 * 1000);
 		if (bot.config.debug === true) return console.log("[DEBUG] Autosender timer reset.")
   	})
 });
