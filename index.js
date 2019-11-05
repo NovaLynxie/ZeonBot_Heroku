@@ -77,7 +77,7 @@ bot.on("ready", () => {
 	bot.guilds.forEach((guild) => { //for each guild the bot is in
 		let defaultChannel = "";
 		guild.channels.forEach((channel) => {
-			if(channel.type == "text" && defaultChannel == "motd") {
+			if(channel.type == "text" && defaultChannel == "") {
 				if(channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
 					defaultChannel = channel;
 				}
@@ -86,7 +86,7 @@ bot.on("ready", () => {
 		setInterval (function () {
 			 defaultChannel.send("Message here") //send it to whatever channel the bot has permissions to send on
 		}, 30 * 1000);
-  })
+  	})
 });
 // Process Error Handler - Catches any errors and attempt to prevent a bot crash.
 process.on('unhandledRejection', error => console.error('[NodeJS] UncaughtPromiseRejection Error!', error));
