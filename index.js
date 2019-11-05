@@ -74,26 +74,31 @@ bot.on("ready", () => {
 	console.log("[ZeonBot] Systems Online.");
 
 	// Message Of The Day reporter.
+	setInterval ( function() {
+		bot.channels.find("name","motd").send("This is a test.")
+		if (bot.config.debug === true){
+			console.log("[DEBUG] Autosender timer reset.")
+		}
+	}, 120 * 1000);
+	/*
 	bot.guilds.forEach((guild) => { //for each guild the bot is in
-		if (bot.config.debug === true) {
-			console.log("[DEBUG] Autosender running...")
-		};
 		let defaultChannel = "";
 		guild.channels.forEach((channel) => {
-			if(channel.type == "text" && defaultChannel == "") {
+			if(channel.type == "text" && channel.name == "motd") {
 				if(channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
 					defaultChannel = channel;
-					console.log(defaultChannel)
+					defaultChannel = channel.name
 				}
 			}
 		})
 		setInterval (function () {
-			 defaultChannel.send("This is a test") //send it to whatever channel the bot has permissions to send on
+			defaultChannel.send("This is a test") //send it to whatever channel the bot has permissions to send on
+			if (bot.config.debug === true){
+				console.log("[DEBUG] Autosender timer reset.")
+			}
 		}, 120 * 1000);
-		if (bot.config.debug === true){
-			console.log("[DEBUG] Autosender timer reset.")
-		}
-  	})
+	})
+	*/
 });
 // Process Error Handler - Catches any errors and attempt to prevent a bot crash.
 process.on('unhandledRejection', error => console.error('[NodeJS] UncaughtPromiseRejection Error!', error));
