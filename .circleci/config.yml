@@ -13,11 +13,19 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
 
-      - run: npm install
+      - run: 
+          name: install-dependencies
+          command: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: dependency-cache-{{ checksum "package.json" }}
     
-      - run: npm test
+      - run: 
+          name: test-script
+          command: npm test
+      
+      - run:
+          name: code-coverage
+          command: ./node_modules/.bin/nyc report --reporter=text-lcov
