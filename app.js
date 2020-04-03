@@ -49,7 +49,7 @@ client.registry
         //help: false,
     })
     .registerCommandsIn(
-        path.join(__dirname, 'zeon_cmds')
+        path.join(__dirname, './zeon_modules/commands')
     );
 
 client.once('ready', () => {
