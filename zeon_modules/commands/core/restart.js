@@ -19,21 +19,7 @@ module.exports = class RestartCommand extends Command {
         message.say("Restarting systems, standby.")
             .then(console.log("[Zeon] Resetting systems... One moment."))
             .then(_msg => this.client.destroy())
-            .then(_msg => {
-                try {
-                    if (config.debug == true){
-                        console.log("[Debug] Reloading config.json file...")
-                        console.log(config)
-                        console.log("[Debug] Reloading activities.json file...")
-                        console.log(activitiesList)
-                    }
-                    if (config.cloud == true) return this.client.login(process.env.botToken)
-                    if (config.cloud == false) return this.client.login(config.botToken)
-                } catch {
-                    console.log("[Warn] No 'cloud' setting found or undefined!")
-                    console.log("[Warn] Falling back on LOCAL HOST mode.")
-                }   return this.client.login(config.botToken)
-            })
+            .then(_msg => this.client.login(process.env.botToken))
             .then(console.log("[Zeon] System restarted successfully!"))
             .then(_msg => this.client.user.setActivity('with Commando'));
     }
