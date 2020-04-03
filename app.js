@@ -53,15 +53,6 @@ client.registry
     );
 
 client.once('ready', () => {
-    if (debug === true){
-        console.log("[Debug] Dev Mode Active! Verbose logging enabled.");
-        console.log('[Debug] AutoDump SelfTest START')
-        console.log(client)
-        console.log('[Debug] AutoDump SelfTest END')
-        console.log("[Debug] ActivitiesList Array SelfTest START");
-        console.log(activitiesList);//Debug console prompt to print all activity status messages to console.
-        console.log("[Debug] ActivitiesList Array SelfTest END");
-    }
     console.log(`[Zeon] Logged in as ${client.user.tag}! (${client.user.id})`);
     client.user.setActivity('with Commando');
 });
