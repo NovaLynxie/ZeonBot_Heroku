@@ -1,6 +1,4 @@
 const { Command } = require('discord.js-commando');
-const config = require('../../config.json')
-const { activitiesList } = require('../../zeon_modules/status/activities.json')
 module.exports = class RestartCommand extends Command {
     constructor(client) {
         super(client, {
