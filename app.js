@@ -2,8 +2,11 @@ const { CommandoClient } = require('discord.js-commando');
 const { Structures } = require('discord.js');
 const path = require('path');
 
-const { activitiesList } = require('./zeon_modules/status/activities.json');
-const { prefix, ownerIDs, cloud, debug, botToken } = require('./config.json');
+const { activitiesList } = require('./zeon_modules/internal/activities.json');
+console.log('[Init] Detecting settings from cloud host enviroment variables.')
+const prefix = process.env.prefix;
+const botToken = process.env.botToken;
+const ownerIDs = process.env.ownerIDs;
 
 Structures.extend('Guild', Guild => {
     class MusicGuild extends Guild {
@@ -25,9 +28,7 @@ Structures.extend('Guild', Guild => {
 
 
 const client = new CommandoClient({
-    //commandPrefix: prefix
     commandPrefix: prefix,
-    //owner: '234356998836191232',
     owner: ownerIDs,
     invite: '',
 });
@@ -98,16 +99,4 @@ client.on('error', error => {
     console.error('[Zeon]', error)
 })
 
-if (cloud == true) {
-    console.log('[Init] System starting in CLOUD HOST mode.')
-    console.log('[Init] Detecting settings from cloud host enviroment variables.')
-    client.login(process.env.botToken)
-} else if (cloud == false) {
-    console.log('[Init] System starting in LOCAL HOST mode.')
-    console.log('[Init] Loading settings from the config.json file.')
-    client.login(botToken);
-} else {
-    console.log(`[Error] Cannot read 'cloud' setting or missing config! Check the file exists and reload the app again.`)
-}
-
-//client.login(botToken); //disabled as replaced with a cloud config loader.
+client.login(botToken);
