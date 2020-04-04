@@ -27,7 +27,7 @@ Structures.extend('Guild', Guild => {
 
 const client = new CommandoClient({
     commandPrefix: prefix,
-    owner: ownerIDs,
+    owner: ownerID,
     invite: '',
 });
 
