@@ -4,9 +4,7 @@ const path = require('path');
 console.log('[Init] Loading activities list from activities.json...')
 const { activitiesList } = require('./zeon_modules/providers/activities.json');
 console.log('[Init] Detecting settings from cloud host enviroment variables.')
-const prefix = process.env.prefix;
-const botToken = process.env.botToken;
-const ownerIDs = process.env.ownerIDs;
+const { botToken, prefix, ownerID } = process.env;
 
 Structures.extend('Guild', Guild => {
     class MusicGuild extends Guild {
