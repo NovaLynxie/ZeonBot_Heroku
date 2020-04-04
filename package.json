@@ -12,7 +12,7 @@
     "DiscordJS"
   ],
   "author": "NovaLynxie",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "github:discordjs/discord.js",
     "discord.js-commando": "github:discordjs/Commando",
