@@ -71,7 +71,6 @@ client.on('ready', () => {
         var statusType = 3 // 3 - Watching
       };
       client.user.setActivity(activitiesList[index], {type: statusType});
-      if (debug == true) (console.log("[Debug] internal.trigger => bot.statusUpdate(index=" + index + ")"));
     }, 300000);
 })
 
